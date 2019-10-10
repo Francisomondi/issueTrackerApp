@@ -32,16 +32,19 @@
 
       <div class="jumbotron">
         <h2>ADD NEW ISSUE</h2>
-        <form id=""> 
+        <form id="issueForm"> 
             <Div class="form-group">
                 <label for="description">description</label>
                 <input type="text" class="form-control" id="description" placeholder="description">
 
             </Div>
             <Div class="form-group">
-                    <label for="severelty">Serverelty</label>
-                    <input type="text" class="form-control" id="severelty" placeholder="Serverelty">
-    
+                    <label for="severity">Serverity</label>
+                   <select id="severityInput" class="form-control">
+                     <option value="low">Low</option>
+                     <option value="medium">Medium</option>
+                     <option value="high">High</option>
+                   </select>
             </Div>
             <Div class="form-group">
                 <label for="assigned">Assigned To</label>
