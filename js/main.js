@@ -1,35 +1,44 @@
 const issueForm = document.getElementById('issueForm');
 
-issueForm.addEventListener( 'submit', (e) =>{
+issueForm.addEventListener('submit', (e) =>{
     const description = document.getElementById('description').value;
     const severityInput = document.getElementById('severityInput').value;
     const assign = document.getElementById('assign').value;
-    const issueId = chance.guide();
-    const issueStatus = 'open';
+    const id = chance.guide();
+    const status = 'Open';
 
-     e.preventDefault();
+     
 
      issue = {
-         id: issueId,
+         id: id,
          description: description,
          severityInput: severityInput,
          assign: assign,
-         status :issueStatus
+         status :status
      }
      
-     if(localStorage.getItem(issues) == null){
-          const issues=[];
-          issues.push(issue);
-          localStorage.setItem('issues'.JSON.stringify(issues));
+     if(localStorage.getItem('issues') == null){
+
+        const issues = [];
+        issues.push(issue);
+        
+        localStorage.setItem('issues', JSON.stringify(issues));
+          
      }
      else{
         const issues = JSON.parse(localStorage.getItem('issues'));
         issues.push(issue);
         localStorage.setItem('issues'.JSON.stringify(issues))
      }
-     document.getElementById('issueForm').reset();
+     e.preventDefault();
      fetchIssues();
+     document.getElementById('issueForm').reset();
+    
 });
+
+
+
+
 
 function fetchIssues(){
     const issues = JSON.parse(localStorage.getItem('issues')); 
@@ -38,7 +47,7 @@ function fetchIssues(){
      
      //build output
      issuelist.innerHTML = '';
-     for(let i=0; i< issues.length; i++){
+     for(let i = 0; i<issues.length; i++){
          let id = issues[i].id;
          let description = issues[i].description;
          let severityInput = issues[i].severityInput;
@@ -58,3 +67,4 @@ function fetchIssues(){
      }
      
   }
+  
