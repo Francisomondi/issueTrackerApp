@@ -37,6 +37,29 @@ issueForm.addEventListener('submit', (e) => {
     
 });
 
+function setStatusClosed(id){
+    const issues = JSON.parse(localStorage.getItem('issues'));
+    for(let i= 0; i< issues.length; i++){
+        if(issues[i].id== id){
+            issues[i].status = 'closed';
+        }
+    }
+    localStorage.setItem('issues', JSON.stringify(issues));
+    fetchIssues();  
+
+}
+function deleteIssue(id){
+    const issues = JSON.parse(localStorage.getItem('issues'));
+    for(let i= 0; i< issues.length; i++){
+        if(issues[i].id== id){
+           issues.splice(i, 1);     
+        }
+    }
+    localStorage.setItem('issues', JSON.stringify(issues));
+    fetchIssues();  
+
+}
+
 
 function fetchIssues(){
     const issues = JSON.parse(localStorage.getItem('issues')); 
@@ -58,10 +81,10 @@ function fetchIssues(){
                                         '<h6> issue id: ' + id +'<h6>' +
                                         '<p> <span class="label label-info">'+ status +'</spam> </p>'+
                                         '<h3>' + description + '</h3>'+
-                                        '<p> <span class="glyphicon glyphicon-time">' + severityInput + '</p>'+
-                                        '<p> <span class="glyphicon glyphicon-user">' + assign + '</p>'+
-                                        '<a  onclick="setStatusClosed(\''+ id +'\')" class= "btn btn-warning" href = "#">close</a>' +
-                                        '<a onclick="deleteIssue(\''+ id +'\')" class= "btn btn-danger" href = "#">Delete</a>' + 
+                                        '<p> <span class="glyphicon glyphicon-time"> ' + severityInput + '</p>'+
+                                        '<p> <span class="glyphicon glyphicon-user"> ' + assign + '</p>'+
+                                        '<a  onclick="setStatusClosed(\''+ id +'\')" class= "btn btn-warning" href = "#">close</a> ' +
+                                        '<a onclick="deleteIssue(\''+ id +'\')" class= "btn btn-danger" href = "#">Delete</a> ' + 
                                          '</div>'   
 
      }
