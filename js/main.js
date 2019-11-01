@@ -60,6 +60,13 @@ function deleteIssue(id){
 
 }
 
+function checkForBlank(){
+    if (description =="" || assign== ""){
+        alert("please fill in the form");
+        return false;
+    }
+}
+
 
 function fetchIssues(){
     const issues = JSON.parse(localStorage.getItem('issues')); 
